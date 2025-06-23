@@ -10,23 +10,24 @@
   <div id="message"></div>
 
   <script>
-    async function checkPassword() {
-      const pw = document.getElementById("pw").value;
+  async function checkPassword() {
+    const pw = document.getElementById("pw").value;
 
-      const res = await fetch("https://spotify-password-backend.onrender.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: pw })
-      });
+    const res = await fetch("https://spotify-password-backend.onrender.com/check-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: pw })
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (data.success) {
-        document.body.innerHTML = "<h1>✅ Access granted!</h1>";
-      } else {
-        document.getElementById("message").textContent = "❌ Incorrect password.";
-      }
+    if (data.success) {
+      document.body.innerHTML = "<h1>✅ Access granted!</h1>";
+    } else {
+      document.getElementById("message").textContent = "❌ Incorrect password.";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
