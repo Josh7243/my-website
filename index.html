@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Login Page</title>
+  <title>Login</title>
 </head>
 <body>
   <h2>Enter Password</h2>
-  <input type="password" id="pw" />
+  <input type="password" id="pw">
   <button onclick="checkPassword()">Submit</button>
   <div id="message"></div>
 
   <script>
-    async function checkPassword() {
-      const pw = document.getElementById('pw').value;
+  async function checkPassword() {
+    const pw = document.getElementById("pw").value;
 
-      // Example: Call your backend to check password and get token
-      const res = await fetch('https://your-backend-url/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: pw }),
-      });
+    const res = await fetch("https://website-password-backend.onrender.com/check-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: pw })
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (data.success) {
-        // Save token to localStorage
-        localStorage.setItem('token', data.token);  // <-- Store the token here
-
-        // Redirect to private page
-        window.location.href = 'private.html';
-      } else {
-        document.getElementById('message').textContent = '❌ Incorrect password.';
-      }
+    if (data.success) {
+      window.location.href = '/private.html';
+    } else {
+      document.getElementById("message").textContent = "❌ Incorrect password.";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
