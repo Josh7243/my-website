@@ -22,7 +22,7 @@
     const data = await res.json();
 
     if (data.success) {
-      window.location.href = '/my-website/private.html';
+      window.location.href = '/private.html';
     } else {
       document.getElementById("message").textContent = "❌ Incorrect password.";
     }
