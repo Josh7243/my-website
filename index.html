@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My First Website</title>
+  <title>Login</title>
+  <script>
+    const correctPassword = "mypassword"; // change this
+
+    function checkPassword() {
+      const input = document.getElementById("pw").value;
+      if (input === correctPassword) {
+        document.body.innerHTML = "<h1>Welcome to the private page!</h1>";
+      } else {
+        alert("Wrong password!");
+      }
+    }
+  </script>
 </head>
 <body>
-    <h1>Hello, world!</h1>
-    <p>YUHHH .</p>
+  <h2>Enter Password</h2>
+  <input type="password" id="pw">
+  <button onclick="checkPassword()">Submit</button>
 </body>
 </html>
