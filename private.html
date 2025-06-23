@@ -5,6 +5,7 @@
   <title>Private Page</title>
   <script>
     // On page load, check for login token
+    <pre>
     window.onload = function() {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -13,6 +14,7 @@
       }
       // Else: show content below
     }
+    <pre>
   </script>
 </head>
 <body>
@@ -22,7 +24,7 @@
 
   <script>
     function logout() {
-      localStorage.removeItem('token');
+      <!-- localStorage.removeItem('token'); -->
       window.location.href = 'index.html';
     }
   </script>
