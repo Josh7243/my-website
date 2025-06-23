@@ -13,7 +13,7 @@
   async function checkPassword() {
     const pw = document.getElementById("pw").value;
 
-    const res = await fetch("https://spotify-password-backend.onrender.com/check-password", {
+    const res = await fetch("https://website-password-backend.onrender.com/check-password", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password: pw })
