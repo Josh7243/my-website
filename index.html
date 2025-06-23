@@ -2,22 +2,31 @@
 <html>
 <head>
   <title>Login</title>
-  <script>
-    const correctPassword = "mypassword"; // change this
-
-    function checkPassword() {
-      const input = document.getElementById("pw").value;
-      if (input === correctPassword) {
-        document.body.innerHTML = "<h1>Welcome to the private page!</h1>";
-      } else {
-        alert("Wrong password!");
-      }
-    }
-  </script>
 </head>
 <body>
   <h2>Enter Password</h2>
   <input type="password" id="pw">
   <button onclick="checkPassword()">Submit</button>
+  <div id="message"></div>
+
+  <script>
+    async function checkPassword() {
+      const pw = document.getElementById("pw").value;
+
+      const res = await fetch("https://your-render-url.com/check-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pw })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        document.body.innerHTML = "<h1>✅ Access granted!</h1>";
+      } else {
+        document.getElementById("message").textContent = "❌ Incorrect password.";
+      }
+    }
+  </script>
 </body>
 </html>
